@@ -359,6 +359,10 @@ Item {
   }
 
   function runBlank() {
+    // Text left unsent in the field when the displays go dark was not typed by
+    // someone about to unlock: stray presses while away, or the key that woke the
+    // screen. Left there, it is prepended to the next password typed.
+    if (!authenticatingPassword) enteredPassword = ""
     root.displaysBlank = true
     root.monitorDpmsKnown = false
     pauseFingerprint()
